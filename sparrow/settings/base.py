@@ -90,30 +90,20 @@ WSGI_APPLICATION = 'sparrow.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+
 # MAIN POST DB
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.getenv('POSTGRES_NAME'),
-#         'USER': os.getenv('POSTGRES_USER'),
-#         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-#         'HOST': os.getenv('POSTGRES_HOST'),
-#         'PORT': os.getenv('POSTGRES_PORT'),
-#         'CONN_MAX_AGE': os.getenv('CONN_MAX_AGE'),
-#     }
-# }
-# TEST POST DB
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sparrow_db',
-        'USER': 'sparrow',
-        'PASSWORD': '$p4RRow',
-        'HOST': 'localhost',
-        'PORT': 5433,
-        'CONN_MAX_AGE': 500,
+        'NAME': os.getenv('POSTGRES_NAME'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('POSTGRES_HOST'),
+        'PORT': os.getenv('POSTGRES_PORT'),
+        'CONN_MAX_AGE': int(os.getenv('CONN_MAX_AGE')),
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
