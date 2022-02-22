@@ -17,6 +17,22 @@ class TitleAndTextBlock(blocks.StructBlock):
 class RichTextBlock(blocks.RichTextBlock):
 
     class Meta:
-        template = 'streams/rich_text_block.html'
-        icon = 'edit'
+        template = 'streams/richtext_block.html'
+        icon = 'doc-full'
         label = 'Full RichText'
+
+
+class SimpleRichTextBlock(blocks.RichTextBlock):
+    """Ricktext with limited features"""
+    def __init__(self, required=True, help_text=None, editor='default', features=None, validators=(), **kwargs):
+        super().__init__(**kwargs)
+        self.features = [
+            'bold',
+            'italic',
+            'link',
+        ]
+
+    class Meta:
+        template = 'streams/richtext_block.html'
+        icon = 'edit'
+        label = 'Simple RichText'
